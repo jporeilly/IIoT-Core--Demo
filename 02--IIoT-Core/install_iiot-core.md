@@ -1,4 +1,4 @@
-## <font color='red'>Installation of Data Catalog 7.0</font>
+## <font color='red'>Installation of IIoT Core 5.0</font>
 
 To download the Data Catalog images and Charts, you will need to contact your Account Manager.  
 * The artifacts are not publicly available. 
