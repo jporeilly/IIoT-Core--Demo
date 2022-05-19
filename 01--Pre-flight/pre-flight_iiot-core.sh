@@ -44,12 +44,15 @@ echo -e "Pre-requisite installations completed .."
 
 # Docker pre-requisites
 sleep 3s
+dnf 
 echo -e "Install Docker .."
 dnf install -y yum-utils
-dnf config-manager –add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf config-manager -–add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf makecache
+dnf remove podman buildah
 dnf list docker-ce
-pause 5s
-dnf install docker-ce --nobest -y
+sleep 5s
+dnf install docker-ce docker-ce-cli containerd,io --nobest -y
 systemctl start docker
 systemctl enable docker
 groupadd docker
@@ -57,7 +60,7 @@ MAINUSER=$(logname)
 usermod -aG docker $MAINUSER
 systemctl daemon-reload
 systemctl restart docker
-pause 2s
+sleep 2s
 echo -e "Docker installed .."
 
 
@@ -84,7 +87,6 @@ tee /etc/docker/daemon.json >/dev/null <<EOF
   "storage-driver": "overlay2"
 }
 EOF
-systemctl start docker.service
-systemctl enable docker.service
-
+systemctl restart docker.service
+sleep 1s
 echo -e "Docker daemon updated .."
