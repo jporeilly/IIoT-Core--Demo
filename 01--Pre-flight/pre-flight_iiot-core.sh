@@ -44,15 +44,15 @@ echo -e "Pre-requisite installations completed .."
 
 # Docker pre-requisites
 sleep 3s
-dnf 
 echo -e "Install Docker .."
-dnf install -y yum-utils
-dnf config-manager -–add-repo https://download.docker.com/linux/centos/docker-ce.repo
-dnf makecache
 dnf remove podman buildah
+dnf install -y yum-utils
+dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf makecache
+
 dnf list docker-ce
 sleep 5s
-dnf install docker-ce docker-ce-cli containerd,io --nobest -y
+dnf install docker-ce docker-ce-cli containerd.io --nobest -y
 systemctl start docker
 systemctl enable docker
 groupadd docker
