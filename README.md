@@ -21,9 +21,9 @@ The following workshop is intended to highlight an on-premise bare-metal install
 
 #### <em> Changelog </em>
 
-| Artifact                   | Date     |  
-| ---------------------------| ---------| 
-| Released                   |          | 
-|                            |          |               
+| Artifact                   | Date       |  
+| ---------------------------| -----------| 
+| Released                   | 01/07/2022 | 
+|                            |            |               
 |
  

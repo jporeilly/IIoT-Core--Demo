@@ -1,6 +1,6 @@
-## <font color='red'>Installation of IIoT Core 5.0</font>
+## <font color='red'>Deploy Hitachi Vantara Foundry Platform 2.3</font>
 
-To download the Data Catalog images and Charts, you will need to contact your Account Manager.  
+To download the Hitachi Vantara Foundry Platform 2.3 images and Charts, you will need to contact your Account Manager.  
 * The artifacts are not publicly available. 
 * To save time, the artifacts have already been downloaded.
 
