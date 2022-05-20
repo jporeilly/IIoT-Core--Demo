@@ -45,20 +45,28 @@ echo -e "Pre-requisite installations completed .."
 # Docker pre-requisites
 sleep 3s
 echo -e "Install Docker .."
-dnf remove podman buildah
+yum remove -y docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-latest \
+                docker-latest-logrotate \
+                docker-logrotate \
+                docker-engine \
+                podman \
+                runc
 dnf install -y yum-utils
-dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 dnf makecache
-
+slepp 2s
 dnf list docker-ce
 sleep 5s
-dnf install docker-ce docker-ce-cli containerd.io --nobest -y
+yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 systemctl start docker
 systemctl enable docker
 groupadd docker
-MAINUSER=$(logname)
-usermod -aG docker $MAINUSER
-systemctl daemon-reload
+usermod -aG docker $USER
+newgrp docker
 systemctl restart docker
 sleep 2s
 echo -e "Docker installed .."
