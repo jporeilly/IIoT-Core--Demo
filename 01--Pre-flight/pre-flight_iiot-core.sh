@@ -56,7 +56,7 @@ yum remove -y docker \
                 podman \
                 runc
 dnf install -y yum-utils
-dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 dnf makecache
 slepp 2s
 dnf list docker-ce
@@ -98,3 +98,7 @@ EOF
 systemctl restart docker.service
 sleep 1s
 echo -e "Docker daemon updated .."
+sleep 2s
+echo -e "Reboot required .."
+sleep 2s
+reboot
