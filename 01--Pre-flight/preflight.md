@@ -20,8 +20,8 @@ Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
 ```
-cd /data/Workshop-DC/01--Pre-flight
-sudo ./pre-flight_dc.sh
+cd Scripts
+sudo ./pre-flight_iiot-core.sh
 ```
 
 --- 
@@ -35,7 +35,7 @@ The Docker Regsitry is installed as a container.
 cd /data/Docker-Registry
 docker-compose up -d
 ```
-Note: check that the container is up and running
+Note: check that the container is up and running -Visual Studio Code
 
 Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
@@ -70,10 +70,9 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 
 ``run the script:``
 ```
-cd /data/Workshop-DC/01--Pre-flight
-sudo ./install_k3s.sh
+cd Scripts
+sudo ./install_k3s-1.23.6.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
 ---
-
