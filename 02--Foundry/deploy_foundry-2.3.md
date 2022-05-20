@@ -70,3 +70,4 @@ When deploying both cluster services and the control plane, the fully qualified 
 docker login iiot-core.skytap.example:5000
 Username: admin
 Password: password
+```
