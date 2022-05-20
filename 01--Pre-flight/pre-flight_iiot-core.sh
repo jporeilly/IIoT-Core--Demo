@@ -19,6 +19,10 @@ dnf upgrade -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
+cp /etc/sysctl.conf /etc/sysctl.conf.bak # Elasticsearch requires a max map count > 262144
+chown -R k8s /etc/sysctl.conf
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+sysctl -p --system
 echo -e "Infrastructure update completed .."
 
 sleep 3s
@@ -45,20 +49,22 @@ echo -e "Pre-requisite installations completed .."
 # Docker pre-requisites
 sleep 3s
 echo -e "Install Docker .."
-yum remove -y docker \
+dnf remove -y docker \
                 docker-client \
                 docker-client-latest \
                 docker-common \
                 docker-latest \
                 docker-latest-logrotate \
                 docker-logrotate \
+                docker-selinux \
+                docker-engine-selinux \
                 docker-engine \
                 podman \
                 runc
-dnf install -y yum-utils bash-completion
-dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+dnf install -y yum-utils bash-completion dnf-plugins-core
+dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf makecache
-slepp 2s
+sleep 2s
 dnf list docker-ce
 sleep 5s
 yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
@@ -66,7 +72,6 @@ systemctl start docker
 systemctl enable docker
 groupadd docker
 usermod -aG docker $USER
-newgrp docker
 systemctl restart docker
 sleep 2s
 echo -e "Docker installed .."

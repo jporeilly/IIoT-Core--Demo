@@ -1,11 +1,11 @@
 ## <font color='red'>Deploy Hitachi Vantara Foundry Platform 2.3</font>
 
-To download the Hitachi Vantara Foundry Platform 2.3 images and Charts, you will need to contact your Account Manager.  
-* The artifacts are not publicly available. 
-* To save time, the artifacts have already been downloaded.
+* Download the [Hitachi Vantara Foundry Platform 2.3](https://repo.wal.eng.hitachivantara.com/ui/native/foundry-generic-release/2.3.0) images and Charts.  
+
 
 * Deploy OpenEBS storageclass
 * Local Docker Registry
+* Install Cluster Services
 
 
 
@@ -71,3 +71,35 @@ docker login iiot-core.skytap.example:5000
 Username: admin
 Password: password
 ```
+
+---
+
+<em>Install Cluster Services</em>
+
+Hitachi Vantara Foundry Platform Control plane expects that the Kubernetes cluster is running with, Istio, cert-manager and has a default StorageClass defined. 
+
+Foundry install directory has to be at least two directories deep in file system.
+
+``create a Foundry-2.3 & Logs directory:``
+```
+cd /data
+sudo mkdir Logs
+sudo mkdir Foundry-2.3
+```
+
+``untar Foundry-2.3 directory:``
+```
+cd /data
+tar -C /data/Foundry-2.3 -xzvf  /data/Packages/Foundry-Control-Plane-2.3.0.tgz
+```
+
+tar -C /data/Foundry-2.3 -zxf &lt;/data/Packages/Foundry-Control-Plane-2.3.0.tgz&gt;
+
+
+./install-cluster-services.sh -r $(hostname -f):5000 -I
+
+/apply-crds.sh --insecure -e -r $(hostname):5000
+
+./install-control-plane.sh -r $(hostname -f):5000 -I
+
+
