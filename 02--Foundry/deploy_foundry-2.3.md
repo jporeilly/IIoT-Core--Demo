@@ -4,36 +4,47 @@ To download the Hitachi Vantara Foundry Platform 2.3 images and Charts, you will
 * The artifacts are not publicly available. 
 * To save time, the artifacts have already been downloaded.
 
-The local Docker Registry has frontend UI.
+* Deploy OpenEBS storageclass
 
-  > navigate to: http://localhost:8080
 
-``login into the Registry:``
-```
-docker login localhost:5000
-Username: admin
-Password: admin   
-```
 
-``upload images:``
-```
-cd Downloads
-./ldc-load-images.sh -i ldc-images-7.0.0-rc.7.tar.gz -r localhost:5000
-```
 
-``create a ldc namespace in k3s:``
-```
-kubectl create namespace ldc
-kubectl get namespace
-```
 
-``install Data Catalog:``
-```
-helm install ldc ldc-7.0.0-rc.7.tgz --set global.registry=localhost:5000 -f values.yml -n ldc
-```
 
-``check all Pods:``
+
+<em>Deploy OpenEBS Storage Class</em>
+
+
+
+``check default storage class:``
 ```
-kubectl get all
+kubebctl get sc
 ```
-Note: make a note of the
+Note: the default is set to 'local-path'.
+
+``add helm openEBS chart:``
+```
+helm repo add openebs https://openebs.github.io/charts
+helm repo update
+```
+``create openebs namespace:``
+```
+kubectl create ns openebs
+```
+``deploy openEBS:``
+```
+helm install --namespace openebs openebs openebs/openebs
+```
+``check the status:``
+```
+kubectl get pods -n openebs
+```
+``patch storageclass to set as default:``
+```
+kubectl patch storageclass openebs-hostpath -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+```
+``verify class set as default:``
+```
+kubectl get sc | grep default
+``
+
