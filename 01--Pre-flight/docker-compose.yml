@@ -8,10 +8,10 @@ services:
     ports:
       - "5000:5000"
     environment:
-      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data 
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data/Docker-Registry 
       REGISTRY_STORAGE_DELETE_ENABLED: true 
     volumes:
-      - ./data:/data
+      - ./data:/data/Docker-Regsitry
 
   docker-registry-ui:
     image: konradkleine/docker-registry-frontend:v2

@@ -55,7 +55,7 @@ yum remove -y docker \
                 docker-engine \
                 podman \
                 runc
-dnf install -y yum-utils
+dnf install -y yum-utils bash-completion
 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 dnf makecache
 slepp 2s

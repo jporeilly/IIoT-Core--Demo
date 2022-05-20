@@ -28,7 +28,16 @@ sudo ./pre-flight_dc.sh
 
 <em>Docker Registry</em>
 
-Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:  
+The Docker Regsitry is installed as a container.
+
+``deploy Registry container:``
+```
+cd /data/Docker-Registry
+docker-compose up -d
+```
+Note: check that the container is up and running
+
+Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
 ```Error response from daemon: Get https://myregistrydomain.com/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
