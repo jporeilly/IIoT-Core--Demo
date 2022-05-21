@@ -71,14 +71,16 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ``run the script:``
 ```
 cd Scripts
-sudo ./install_k3s-1.23.6.sh
+sudo ./deploy_k3s-1.23.6.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
-``deploy hello-world:``
+``deploy nginx:``
 ```
 kubectl create namespace test
-kubectl apply -f example-helloworld.yaml -n test
+kubectl create deployment --image nginx my-nginx -n test
+kubectl get pods -n test
+kubectl expose deployment my-nginx --port=8000 --type=LoadBalancer -n test
 ```
 
 ---
