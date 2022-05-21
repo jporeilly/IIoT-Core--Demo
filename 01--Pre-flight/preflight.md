@@ -75,4 +75,9 @@ sudo ./install_k3s-1.23.6.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
+``deploy hello-world:``
+```
+kubectl apply -f example-helloworld.yaml
+```
+
 ---
