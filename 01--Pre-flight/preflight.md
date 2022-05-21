@@ -28,6 +28,49 @@ sudo ./pre-flight_iiot-core.sh
 
 <em>Docker Registry</em>
 
+By default, Docker client uses a secure connection over TLS to upload or download images to or from a private registry. You can use TLS certificates signed by CA or self-signed on Registry server.
+
+``create certs directory:``
+```
+sudo mkdir -p /certs
+```
+``create certs:``
+```
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/ca.key -x509 -days 365 -out /certs/ca.crt
+```
+``fill out with the following details:``
+```
+Country Name (2 letter code) [XX]:UK
+State or Province Name (full name) []:London
+Locality Name (eg, city) [Default City]:London
+Organization Name (eg, company) [Default Company Ltd]:Hitachi Vantara
+Organizational Unit Name (eg, section) []:IT
+Common Name (eg, your name or your server's hostname) []:iiot-core.skytap.example
+Email Address []:admin@hv.com
+```
+
+``copy certs from Registry server to Docker:``
+```
+sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
+sudo cp /certs/ca.crt /etc/docker/certs.d/iiot-core.skytap.example:5000/
+```
+
+``restart docker:``
+```
+systemctl restart docker
+```
+
+
+
+``add port to firewalld :``
+```
+firewall-cmd --permanent --add-port=5000/tcp
+firewall-cmd --reload
+```
+Note: not required as firewall is disabled.
+
+
+
 The Docker Regsitry is installed as a container.
 
 ``deploy Registry container:``

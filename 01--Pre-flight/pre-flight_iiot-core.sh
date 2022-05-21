@@ -96,7 +96,6 @@ tee /etc/docker/daemon.json >/dev/null <<EOF
     "max-size": "100m"
   },
 
-
   "storage-driver": "overlay2"
 }
 EOF
