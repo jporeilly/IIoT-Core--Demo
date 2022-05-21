@@ -82,38 +82,36 @@ Foundry install directory has to be at least two directories deep in file system
 
 ``create a Foundry-2.3 & Logs directory:``
 ```
-cd /data
-sudo mkdir Logs
+cd
 sudo mkdir Foundry-2.3
+sudo mkdir Foundry-2.3/Logs
 ```
 
 ``untar Foundry-2.3 directory:``
 ```
 cd /data
-tar -C /data/Foundry-2.3 -xzvf  /data/Packages/Foundry-Control-Plane-2.3.0.tgz
+tar -C ~/Foundry-2.3 -xzvf  /data/Packages/Foundry-Control-Plane-2.3.0.tgz
 ```
-
-tar -C /data/Foundry-2.3 -zxf &lt;/data/Packages/Foundry-Control-Plane-2.3.0.tgz&gt;
 
 Foundry's Control plane expects that the Kubernetes cluster is running with, Istio, cert-manager and has a default StorageClass defined 
 
 ```
-cd /data/Foundry-2.3
-./bin/install-cluster-services.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a /data/Logs/install-cluster-services-2.3.log
+cd ~/Foundry-2.3
+./bin/install-cluster-services.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-cluster-services-2.3.log
 ```
 
 From version 2.2.0 onwards, Foundry manages Custom Resource Definitions (CRDs) for the Solution Control Plane, Addons and Solutions in Helm charts, to facilitate re-use between multiple control planes.
 
 ``deploy custom-resource-definitions:``
 ```
-cd /data/Foundry-2.3
-./bin/apply-crds.sh --insecure -e -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a /data/Logs/apply-crds-2.3.log
+cd ~/Foundry-2.3
+./bin/apply-crds.sh --insecure -e -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/apply-crds-2.3.log
 ```
 
 
 
 ``deploy control-plane:``
 ```
-cd /data/Foundry-2.3
-./bin/install-control-plane.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a /data/Logs/install-control-plane-2.3.log
+cd ~/Foundry-2.3
+./bin/install-control-plane.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-control-plane-2.3.log
 ```
