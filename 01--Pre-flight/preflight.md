@@ -77,7 +77,8 @@ Note: k3s is installed with Traefik disabled. Not required for single node.
 
 ``deploy hello-world:``
 ```
-kubectl apply -f example-helloworld.yaml
+kubectl create namespace test
+kubectl apply -f example-helloworld.yaml -n test
 ```
 
 ---

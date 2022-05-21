@@ -9,7 +9,7 @@
 # ==============================================================
 
 # Install k3s - Rancher
-curl https://get.k3s.io | sudo INSTALL_K3S_COMMIT=$COMMIT INSTALL_K3S_TYPE=server sh -s - --cluster-init --disable traefik
+curl -sfL https://get.k3s.io | sh -
 
 # Connect and test kubectl
 chown -R k8s /etc/rancher/k3s/k3s.yaml

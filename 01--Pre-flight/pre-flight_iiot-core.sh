@@ -62,7 +62,7 @@ dnf remove -y docker \
                 podman \
                 runc
 dnf install -y yum-utils bash-completion dnf-plugins-core
-dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 dnf makecache
 sleep 2s
 dnf list docker-ce
