@@ -36,7 +36,7 @@ sudo mkdir -p /certs
 ```
 ``create certs:``
 ```
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/registry.key -x509 -days 365 -out certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:iiot-core.skytap.example"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:iiot-core.skytap.example"
 ```
 
 ``fill out with the following details:``
@@ -52,13 +52,13 @@ Email Address []:admin@hv.com
 
 ``copy certs to Registry:``
 ```
-sudo cp /certs/* /data/Docker-Registry/certs
+sudo cp /certs/registry.* /data/Docker-Registry/certs
 ```
 
 ``copy certs to Docker:``
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
-sudo cp /certs/registry.crt /etc/docker/certs.d/iiot-core.skytap.example:5000
+sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
 ```
 
 ``restart docker:``

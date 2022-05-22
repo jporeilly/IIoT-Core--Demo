@@ -1,11 +1,16 @@
 ## <font color='red'>Deploy Hitachi Vantara Foundry Platform 2.3</font>
 
+
+
 * Download the [Hitachi Vantara Foundry Platform 2.3](https://repo.wal.eng.hitachivantara.com/ui/native/foundry-generic-release/2.3.0) images and Charts.  
 
 
 * Deploy OpenEBS storageclass
 * Local Docker Registry
-* Install Cluster Services
+
+* Deploy Cluster Services
+* Deploy Custom Resource Definitions
+* Deploy Solution Control Plane 
 
 
 
@@ -74,7 +79,7 @@ Password: password
 
 ---
 
-<em>Install Cluster Services</em>
+<em>Deploy Cluster Services</em>
 
 Hitachi Vantara Foundry Platform Control plane expects that the Kubernetes cluster is running with, Istio, cert-manager and has a default StorageClass defined. 
 
@@ -100,6 +105,10 @@ cd ~/Foundry-2.3
 ./bin/install-cluster-services.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-cluster-services-2.3.log
 ```
 
+---
+
+<em>Deploy Custom Resource Definitions</em>
+
 From version 2.2.0 onwards, Foundry manages Custom Resource Definitions (CRDs) for the Solution Control Plane, Addons and Solutions in Helm charts, to facilitate re-use between multiple control planes.
 
 ``deploy custom-resource-definitions:``
@@ -108,10 +117,14 @@ cd ~/Foundry-2.3
 ./bin/apply-crds.sh --insecure -e -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/apply-crds-2.3.log
 ```
 
+---
 
+<em>Deploy Solution Control-Plane</em>
 
-``deploy control-plane:``
+``deploy solution control-plane:``
 ```
 cd ~/Foundry-2.3
 ./bin/install-control-plane.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-control-plane-2.3.log
 ```
+
+---
