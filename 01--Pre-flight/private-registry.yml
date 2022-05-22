@@ -29,6 +29,8 @@ spec:
         name: docker-registry
         imagePullPolicy: IfNotPresent
         env:
+          - name: REGISTRY_STORAGE_DELETE_ENABLED
+            value: true
           - name: REGISTRY_HTTP_TLS_CERTIFICATE
             value: "/certs/registry.crt"
           - name: REGISTRY_HTTP_TLS_KEY
