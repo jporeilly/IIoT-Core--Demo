@@ -39,17 +39,6 @@ sudo mkdir -p /certs
 sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:iiot-core.skytap.example"
 ```
 
-``fill out with the following details:``
-```
-Country Name (2 letter code) [XX]:UK
-State or Province Name (full name) []:London
-Locality Name (eg, city) [Default City]:London
-Organization Name (eg, company) [Default Company Ltd]:Hitachi Vantara
-Organizational Unit Name (eg, section) []:IT
-Common Name (eg, your name or your server's hostname) []:iiot-core.skytap.example
-Email Address []:admin@hv.com
-```
-
 ``copy certs to Registry:``
 ```
 sudo cp /certs/registry.* /data/Docker-Registry/certs
@@ -63,7 +52,7 @@ sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
 
 ``restart docker:``
 ```
-systemctl restart docker
+sudo systemctl restart docker
 ```
 
 ``add port to firewalld :``
