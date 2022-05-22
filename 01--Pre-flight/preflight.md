@@ -50,6 +50,11 @@ sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
 sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
 ```
 
+``check certs:``
+```
+openssl s_client -showcerts -connect iiot-core.skytap.example:5000
+```
+
 ``restart docker:``
 ```
 sudo systemctl restart docker
