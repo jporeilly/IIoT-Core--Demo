@@ -41,5 +41,3 @@ echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 sysctl -p --system
 echo -e "Infrastructure update completed .."
 
-sleep 3s
-echo -e "Install Pre-requisites .."
