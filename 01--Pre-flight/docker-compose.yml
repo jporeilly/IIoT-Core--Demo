@@ -9,8 +9,8 @@ services:
       - "5000:5000"
     environment:
       REGISTRY_HTTP_ADDR: "0.0.0.0:5000"
-      REGISTRY_HTTP_TLS_CERTIFICATE: "/certs/ca.crt"
-      REGISTRY_HTTP_TLS_KEY: "/certs/ca.key"
+      REGISTRY_HTTP_TLS_CERTIFICATE: "/certs/registry.crt"
+      REGISTRY_HTTP_TLS_KEY: "/certs/registry.key"
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data/Docker-Registry 
       REGISTRY_STORAGE_DELETE_ENABLED: true 
     volumes:
