@@ -36,8 +36,9 @@ sudo mkdir -p /certs
 ```
 ``create certs:``
 ```
-openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt
 ```
+
 ``fill out with the following details:``
 ```
 Country Name (2 letter code) [XX]:UK
@@ -52,7 +53,7 @@ Email Address []:admin@hv.com
 ``copy certs from Registry server to Docker:``
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
-sudo cp /certs/registry.crt /etc/docker/certs.d/iiot-core.skytap.example:5000/
+sudo cp /certs/registry.crt /etc/docker/certs.d/iiot-core.skytap.example:5000
 ```
 
 ``restart docker:``
