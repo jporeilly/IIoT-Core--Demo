@@ -36,7 +36,7 @@ sudo mkdir -p /certs
 ```
 ``create certs:``
 ```
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/registry.key -x509 -days 365 -out certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:iiot-core.skytap.example"
 ```
 
 ``fill out with the following details:``
@@ -50,7 +50,12 @@ Common Name (eg, your name or your server's hostname) []:iiot-core.skytap.exampl
 Email Address []:admin@hv.com
 ```
 
-``copy certs from Registry server to Docker:``
+``copy certs to Registry:``
+```
+sudo cp /certs/* /data/Docker-Registry/certs
+```
+
+``copy certs to Docker:``
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
 sudo cp /certs/registry.crt /etc/docker/certs.d/iiot-core.skytap.example:5000
@@ -67,8 +72,6 @@ firewall-cmd --permanent --add-port=5000/tcp
 firewall-cmd --reload
 ```
 Note: not required as firewall is disabled.
-
-
 
 The Docker Regsitry is installed as a container.
 
