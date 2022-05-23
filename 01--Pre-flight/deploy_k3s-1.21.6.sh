@@ -9,7 +9,7 @@
 # ==============================================================
 
 # Install k3s - Rancher
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.4.12-k3s1 sh -
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.12+k3s1 sh -
 
 # Connect and test kubectl
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
