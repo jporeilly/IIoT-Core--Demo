@@ -48,6 +48,8 @@ sudo cp /certs/registry.* /data/Docker-Registry/certs
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
 sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
+sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
+sudo update-ca-trust
 ```
 
 ``check certs:``
