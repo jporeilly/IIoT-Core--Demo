@@ -48,6 +48,10 @@ sudo cp /certs/registry.* /data/Docker-Registry/certs
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
 sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
+```
+
+``copy certs to Node:``
+```
 sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust
 ```
@@ -68,6 +72,25 @@ firewall-cmd --permanent --add-port=5000/tcp
 firewall-cmd --reload
 ```
 Note: not required as firewall is disabled.
+
+On bootup, RKE2 will check to see if a registries.yaml file exists at /etc/rancher/rke2/ and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
+
+``/etc/rancher/k3s/registries.yaml:``
+```
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://iiot-core.skytap.example:5000"
+configs:
+  "iiot-core.skytap.example:5000":
+    auth:
+      username: xxxxxx # this is the registry username
+      password: xxxxxx # this is the registry password
+    tls:
+      cert_file: /cert/registry.crt # path to the cert file used in the registry
+      key_file:  /cert/registry.key # path to the key file used in the registry
+      ca_file:   # path to the ca file used in the registry
+
 
 The Docker Regsitry is installed as a container.
 
