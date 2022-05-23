@@ -12,9 +12,6 @@
 * Deploy Custom Resource Definitions
 * Deploy Solution Control Plane 
 
-
-
-
 ---
 
 
@@ -25,7 +22,7 @@ Its is not recommended for production environments.
 
 ``check default storage class:``
 ```
-kubebctl get sc
+kubectl get sc
 ```
 Note: the default is set to 'local-path'.
 
