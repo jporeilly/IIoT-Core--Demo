@@ -90,7 +90,7 @@ configs:
       cert_file: /cert/registry.crt # path to the cert file used in the registry
       key_file:  /cert/registry.key # path to the key file used in the registry
       ca_file:   # path to the ca file used in the registry
-
+```
 
 The Docker Regsitry is installed as a container.
 
@@ -140,7 +140,7 @@ sudo ./deploy_k3s-1.23.6.sh
 Note: k3s is installed with Traefik.
 
 
-
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 
 

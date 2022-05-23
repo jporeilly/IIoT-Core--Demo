@@ -127,4 +127,9 @@ cd ~/Foundry-2.3
 ./bin/install-control-plane.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-control-plane-2.3.log
 ```
 
+
+
 ---
+
+
+https://$HOSTNAME:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 

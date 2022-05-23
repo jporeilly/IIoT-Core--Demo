@@ -12,6 +12,7 @@
 curl -sfL https://get.k3s.io | sh -
 
 # Connect and test kubectl
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 mkdir ~/.kube
 cp -i /etc/rancher/k3s/k3s.yaml  $HOME/.kube/config
 chown -R $(id -u):$(id -g) $HOME/.kube/config
