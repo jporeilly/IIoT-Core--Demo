@@ -48,6 +48,10 @@ sudo cp /certs/registry.* /data/Docker-Registry/certs
 ```
 sudo mkdir -p /etc/docker/certs.d/iiot-core.skytap.example:5000
 sudo cp /certs/registry.* /etc/docker/certs.d/iiot-core.skytap.example:5000
+```
+
+``copy certs to Node:``
+```
 sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust
 ```
@@ -87,8 +91,14 @@ Resolution:
 * Ensure all the containers have started. Check containers in Docker section of VSC.
 
 ```
+cd /etc/docker
+sudo nano daemon.json
+```
+
+``check the entry:``
+```
 {
-"insecure-registries" : ["myregistrydomain.com:port", "0.0.0.0"]
+"insecure-registries" : ["iiot-core.skytap.example:5000", "0.0.0.0"]
 }
 ```
 
@@ -114,14 +124,46 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 cd Scripts
 sudo ./deploy_k3s-1.23.6.sh
 ```
-Note: k3s is installed with Traefik disabled. Not required for single node.
+Note: k3s is installed with Traefik.
 
-``deploy nginx:``
+``ensure kubectl can connect:``
 ```
-kubectl create namespace test
-kubectl create deployment --image nginx my-nginx -n test
-kubectl get pods -n test
-kubectl expose deployment my-nginx --port=8000 --type=LoadBalancer -n test
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
 
+``uninstall Rancher:``
+```
+cd /usr/local/bin/
+sudo ./k3s-uninstall.sh
+```
 ---
+
+On bootup, RKE2 will check to see if a registries.yaml file exists at /etc/rancher/rke2/ and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
+
+``/etc/rancher/k3s/registries.yaml:``
+```
+cd /etc/rancher/k3s
+sudo nano registries.yaml
+```
+
+``add the following:``
+```
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://iiot-core.skytap.example:5000"
+configs:
+  "iiot-core.skytap.example:5000":
+    auth:
+      username: xxxxxx # this is the registry username
+      password: xxxxxx # this is the registry password
+    tls:
+      cert_file: /cert/registry.crt # path to the cert file used in the registry
+      key_file:  /cert/registry.key # path to the key file used in the registry
+      ca_file:   # path to the ca file used in the registry
+```
+
+``check certs:``
+```
+openssl s_client -showcerts -connect iiot-core.skytap.example:5000
+```
