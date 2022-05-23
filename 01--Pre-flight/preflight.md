@@ -56,11 +56,6 @@ sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust
 ```
 
-``check certs:``
-```
-openssl s_client -showcerts -connect iiot-core.skytap.example:5000
-```
-
 ``restart docker:``
 ```
 sudo systemctl restart docker
@@ -111,6 +106,11 @@ sudo nano daemon.json
 docker login localhost:5000
 Username: admin
 Password: password  
+```
+
+``check certs:``
+```
+openssl s_client -showcerts -connect iiot-core.skytap.example:5000
 ```
 
 ---

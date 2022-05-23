@@ -128,5 +128,7 @@ cd ~/Foundry-2.3
 
 ---
 
+The default username is `keycloak` and password is `start123`
+
 
 https://$HOSTNAME:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 

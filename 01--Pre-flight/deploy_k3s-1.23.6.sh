@@ -15,7 +15,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.4.12-k3s1 sh -
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 mkdir ~/.kube
 cp -i /etc/rancher/k3s/k3s.yaml  $HOME/.kube/config
-chown -R $(id -u):$(id -g) $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/
 systemctl enable k3s
 kubectl get pods -A
 echo -e "k3s Installation Completed .."
