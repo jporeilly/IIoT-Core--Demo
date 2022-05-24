@@ -1,8 +1,10 @@
 ## <font color='red'>Deploy Hitachi Vantara Foundry Platform 2.3</font>
 
+Hitachi Foundry is a framework for the rapid development, curation, and management of service-oriented software solutions.
+Foundry makes it easy for developers to build and share custom capabilities, and simple for customers to flexibly deploy and manage them.
 
-
-* Download the [Hitachi Vantara Foundry Platform 2.3](https://repo.wal.eng.hitachivantara.com/ui/native/foundry-generic-release/2.3.0) images and Charts.  
+* Hitachi Vantara Employees:
+Download the [Hitachi Vantara Foundry Platform 2.3](https://repo.wal.eng.hitachivantara.com/ui/native/foundry-generic-release/2.3.0) images and Charts.  
 
 
 * Deploy OpenEBS storageclass
@@ -124,14 +126,14 @@ cd ~/Foundry-2.3
 ./bin/install-control-plane.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-control-plane-2.3.log
 ```
 
+``log into the Control-Plane:``
 
-
----
-
-The default username is `keycloak` and password is `start123`
+  > navigate to: https://iiot-core.skytap.example:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 
 
 
 echo $(kubectl get keycloakusers -n hitachi-solutions keycloak-user -o jsonpath='{.spec.user.credentials[0].value}')
 
 
 https://iiot-core.skytap.example:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 
+
+The default username is `keycloak` and password is `start123`
