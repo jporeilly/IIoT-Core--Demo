@@ -155,8 +155,8 @@ mirrors:
 configs:
   "iiot-core.skytap.example:5000":
     auth:
-      username: xxxxxx # this is the registry username
-      password: xxxxxx # this is the registry password
+      username: admin # this is the registry username
+      password: password # this is the registry password
     tls:
       cert_file: /cert/registry.crt # path to the cert file used in the registry
       key_file:  /cert/registry.key # path to the key file used in the registry

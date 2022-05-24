@@ -86,7 +86,7 @@ Foundry install directory has to be at least two directories deep in file system
 ```
 cd
 sudo mkdir Foundry-2.3
-sudo mkdir Foundry-2.3/Logs
+mkdir Foundry-2.3/Logs
 ```
 
 ``untar Foundry-2.3 directory:``
@@ -131,4 +131,7 @@ cd ~/Foundry-2.3
 The default username is `keycloak` and password is `start123`
 
 
-https://$HOSTNAME:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 
+echo $(kubectl get keycloakusers -n hitachi-solutions keycloak-user -o jsonpath='{.spec.user.credentials[0].value}')
+
+
+https://iiot-core.skytap.example:30443/hitachi-solutions/hscp-hitachi-solutions/solution-control-plane/ 
