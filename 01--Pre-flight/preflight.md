@@ -122,14 +122,12 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ``run the script:``
 ```
 cd Scripts
-sudo ./deploy_k3s-1.21.12.sh
+./deploy_k3s-1.21.12.sh
 ```
-Note: k3s is installed with Traefik.
+Note: k3s is installed with Traefik. 
 
-``ensure kubectl can connect:``
-```
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-```
+If you're having problems connecting to the node, ensure that the /etc/rancher/k3s/k3s.yaml has been copied over to the ~/.kube/config and is chown k8s. 
+
 
 ``uninstall Rancher:``
 ```
@@ -138,7 +136,7 @@ sudo ./k3s-uninstall.sh
 ```
 ---
 
-On bootup, RKE2 will check to see if a registries.yaml file exists at /etc/rancher/rke2/ and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
+On bootup, RKE2 will check to see if a registries.yaml file exists at /etc/rancher/r3s/ and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
 
 ``/etc/rancher/k3s/registries.yaml:``
 ```

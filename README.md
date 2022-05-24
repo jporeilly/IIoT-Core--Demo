@@ -3,14 +3,16 @@ The following workshop is intended to highlight an on-premise bare-metal install
 
 #### <font color='red'>Module 01 - Pre-flight</font>
 * Configure SkyTap Lab
-* Install k8s - single node
+* Install k3s Rancher - single node
 * Install Docker
 * Install local Docker Registry
 
 
-#### <font color='red'>Module 02 - Install IIoT 5.0 - Core</font>
-* Upload images
-* 
+#### <font color='red'>Module 02 - Foundry-2.3</font>
+* Install OpenEbs
+* Deploy Foundry
+
+* Post Installation
 
 #### <font color='red'>Module 03 - IIoT 5.0 - Core</font>
 *
@@ -23,7 +25,6 @@ The following workshop is intended to highlight an on-premise bare-metal install
 
 | Artifact                   | Date       |  
 | ---------------------------| -----------| 
-| Released                   | 01/07/2022 | 
-|                            |            |               
+| Released                   | 01/06/2022 | 
 |
  

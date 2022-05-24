@@ -45,7 +45,6 @@ echo -e "Helm installed .."
 sleep 2s
 echo -e "Pre-requisite installations completed .."
 
-
 # Docker pre-requisites
 sleep 3s
 echo -e "Install Docker .."
@@ -73,7 +72,7 @@ systemctl enable docker
 groupadd docker
 usermod -aG docker $USER
 systemctl restart docker
-sleep 2s
+sleep 3s
 echo -e "Docker installed .."
 
 
@@ -102,7 +101,7 @@ EOF
 systemctl restart docker.service
 sleep 1s
 echo -e "Docker daemon updated .."
-sleep 2s
+sleep 3s
 echo -e "Reboot required .."
-sleep 2s
+sleep 3s
 reboot
