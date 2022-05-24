@@ -122,7 +122,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ``run the script:``
 ```
 cd Scripts
-sudo ./deploy_k3s-1.21.6.sh
+sudo ./deploy_k3s-1.21.12.sh
 ```
 Note: k3s is installed with Traefik.
 
