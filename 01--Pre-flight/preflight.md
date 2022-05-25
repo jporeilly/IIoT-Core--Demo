@@ -175,6 +175,8 @@ To save typing out the kubectl commands, in the resources folder there's a kubec
 
 ``add the following to your .bashrc/.zshrc file:``
 ```
+cd 
+sudo nano .bashrc
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 ```
 

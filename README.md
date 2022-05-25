@@ -9,9 +9,8 @@ The following workshop is intended to highlight an on-premise bare-metal install
 
 
 #### <font color='red'>Module 02 - Foundry-2.3</font>
-* Install OpenEbs
+* Install OpenEBS
 * Deploy Foundry
-
 * Post Installation
 
 #### <font color='red'>Module 03 - IIoT 5.0 - Core</font>
