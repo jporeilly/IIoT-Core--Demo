@@ -15,9 +15,9 @@ remoteUser=jporeilly
 localUser=k8s
 remoteDir=IIoT-Core--Demo
 remoteRepo=http://$remoteHost/$remoteUser/$remoteDir
-localDirW=/data/Workshop-IIoT-Core
+localDirW=~/Workshop-IIoT-Core
 localDirS=~/Scripts
-localDirR=/data/Docker-Registry
+localDirR=~/Docker-Registry
 
 if [ -d "$localDirW" -a ! -h "$localDirW" ]
 then
