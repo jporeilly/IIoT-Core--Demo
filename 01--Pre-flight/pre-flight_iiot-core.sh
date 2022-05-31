@@ -17,6 +17,9 @@
 dnf update -y
 dnf upgrade -y
 dnf install epel-release -y
+dnf install snapd -y
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap  /snap
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
@@ -40,7 +43,7 @@ sleep 2s
 echo -e "Yq installed .."
 
 # Install Jq 
-dnf install -y jq
+dnf install jq -y
 sleep 2s
 echo -e "Jq installed .."
 
