@@ -72,7 +72,7 @@ The Docker Regsitry is installed as a container.
 
 ``deploy Registry container:``
 ```
-cd /data/Docker-Registry
+cd Docker-Registry
 docker-compose up -d
 ```
 Note: check that the container is up and running -Visual Studio Code
