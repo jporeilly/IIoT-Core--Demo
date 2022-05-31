@@ -41,7 +41,7 @@ sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x5
 
 ``copy certs to Registry:``
 ```
-sudo cp /certs/registry.* /data/Docker-Registry/certs
+sudo cp /certs/registry.* /Docker-Registry/certs
 ```
 
 ``copy certs to Docker:``
@@ -158,8 +158,8 @@ configs:
       username: admin # this is the registry username
       password: password # this is the registry password
     tls:
-      cert_file: /cert/registry.crt # path to the cert file used in the registry
-      key_file:  /cert/registry.key # path to the key file used in the registry
+      cert_file: /certs/registry.crt # path to the cert file used in the registry
+      key_file:  /certs/registry.key # path to the key file used in the registry
       ca_file:   # path to the ca file used in the registry
 ```
 
