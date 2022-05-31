@@ -136,6 +136,8 @@ sudo ./k3s-uninstall.sh
 ```
 ---
 
+<em>k3s registries.yml</em>
+
 On bootup, RKE2 will check to see if a registries.yaml file exists at /etc/rancher/r3s/ and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
 
 ``/etc/rancher/k3s/registries.yaml:``

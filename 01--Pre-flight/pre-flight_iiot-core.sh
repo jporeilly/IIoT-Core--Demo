@@ -16,6 +16,7 @@
 # Infrastructure
 dnf update -y
 dnf upgrade -y
+dnf install epel-release -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
