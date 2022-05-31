@@ -15,7 +15,7 @@ Prerequisites for the iIIoT Core 5.0 server:
 
 <em>Install Docker / Docker Compose</em>
 
-The following script prepares a RHEL 8.4 server for IIoT Core 5.0.  
+The following script prepares a RHEL compatible 8.4 server for IIoT Core 5.0.  
 Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
@@ -33,6 +33,9 @@ By default, Docker client uses a secure connection over TLS to upload or downloa
 ``create certs directory:``
 ```
 sudo mkdir -p /certs
+sudo mkdir Docker-Registry
+sudo mkdir Docker-Registry/certs
+sudo mkdir Docker-Registry/data
 ```
 ``create certs:``
 ```
