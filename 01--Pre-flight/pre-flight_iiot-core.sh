@@ -98,7 +98,7 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 tee /etc/docker/daemon.json >/dev/null <<EOF
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
-  "insecure-registries" : ["foundry.skytap.example:5000","0.0.0.0/0"],
+  "insecure-registries" : ["iiot-core.skytap.example:5000","0.0.0.0/0"],
   "log-driver": "json-file",
   "log-opts": {
     "max-size": "100m"
