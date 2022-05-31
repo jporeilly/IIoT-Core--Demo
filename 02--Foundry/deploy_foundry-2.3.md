@@ -49,7 +49,7 @@ kubectl get pods -n openebs
 ```
 kubectl patch storageclass openebs-hostpath -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
-Note: Only have storageclass set as default.
+Note: Only have one storageclass set as default.  
 ``patch 'local-path' storageclass:``
 ```
 kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
