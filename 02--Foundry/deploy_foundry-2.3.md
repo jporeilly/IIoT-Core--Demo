@@ -102,7 +102,11 @@ Foundry's Control plane expects that the Kubernetes cluster is running with, Ist
 cd Foundry-2.3
 ./bin/install-cluster-services.sh -I -r iiot-core.skytap.example:5000 -u admin -p password -D true 2>&1 | tee -a ~/Foundry-2.3/Logs/install-cluster-services-2.3.log
 ```
-Note: If you have a permission denied while trying to connect to docker daemon then execute: ``sudo chmod 666 /var/run/docker.sock``
+Note: If you have a permission denied while trying to connect to docker daemon then execute: 
+
+``sudo chmod 666 /var/run/docker.sock`` # you need to be aware that this allows any user/non-root-process access  to the docker socket which can completely compromise your system. Demo env only.
+``sudo usermod -aG docker $USER`` # ensures user id added to docker group
+``sudo chown -R  $(id -u):$(id -g) $HOME/.kube/`` # check [user] owns the .kube/config 
 
 ---
 
